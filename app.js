@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors')
 const cookieParser = require('cookie-parser');
 const authRoutes = require('./routes/authRoutes');
 const providerRoutes = require('./routes/providerRoutes');
 const searchRoutes = require('./routes/searchRoutes');
+const bookings = require('./routes/bookingRoutes')
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -11,10 +13,18 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cookieParser()); // For parsing cookies
 
+app.use(cors({
+    origin: 'http://localhost:5173', // Replace with your frontend's origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true, // If you need to allow credentials
+}));
+
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/providers', providerRoutes);
 app.use('/api/search', searchRoutes);
+app.use('/api/bookings', bookings)
 
 // Error handling middleware
 app.use((err, req, res, next) => {
