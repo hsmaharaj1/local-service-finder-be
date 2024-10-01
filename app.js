@@ -6,8 +6,8 @@ const providerRoutes = require('./routes/providerRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 const bookings = require('./routes/bookingRoutes')
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+const app = express(); 
+const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(express.json());

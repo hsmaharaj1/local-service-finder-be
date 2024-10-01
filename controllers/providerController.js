@@ -64,7 +64,7 @@ exports.getProviderDetails = async (req, res) => {
 
     try {
         const result = await db.query(
-            `SELECT sp.id, sp.name, sp.email, pd.location, pd.latitude, pd.longitude, pd.about, pd.category
+            `SELECT sp.id, sp.name, sp.email, pd.location, pd.latitude, pd.longitude, pd.about, pd.category, pd.rating
              FROM service_providers sp
              JOIN provider_details pd ON sp.id = pd.provider_id
              WHERE sp.id = $1`, [providerId]
