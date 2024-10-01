@@ -42,7 +42,9 @@ exports.searchRandom = async (req, res) => {
     try {
         // Query to select up to 6 random providers
         const result = await db.query(
-            `SELECT * FROM provider_details ORDER BY RANDOM() LIMIT 6`
+            `SELECT sp.id, sp.name, sp.email, pd.location, pd.latitude, pd.longitude, pd.category
+             FROM service_providers sp
+             JOIN provider_details pd ON sp.id = pd.provider_id ORDER BY RANDOM() LIMIT 6`
         );
 
         // Get the providers from the query result
