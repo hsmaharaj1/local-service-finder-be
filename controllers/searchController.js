@@ -37,3 +37,25 @@ exports.searchProviders = async (req, res) => {
         res.status(500).json({ success: false, message: 'Error fetching services' });
     }
 };
+
+exports.searchRandom = async (req, res) => {
+    try {
+        // Query to select up to 6 random providers
+        const result = await db.query(
+            `SELECT * FROM provider_details ORDER BY RANDOM() LIMIT 6`
+        );
+
+        // Get the providers from the query result
+        const providers = result.rows;
+
+        // Respond with the providers found, maintaining the response format
+        res.status(200).json({
+            success: true,
+            providers: providers, // List of providers (could be less than 6)
+            count: providers.length // Count of returned providers
+        });
+    } catch (error) {
+        console.error('Error fetching random providers:', error);
+        res.status(500).json({ success: false, message: 'Error fetching providers' });
+    }
+};
