@@ -7,7 +7,7 @@ const searchRoutes = require('./routes/searchRoutes');
 const bookings = require('./routes/bookingRoutes')
 
 const app = express(); 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.DB_BACKEND_PORT || 5001;
 
 // Middleware
 app.use(express.json());

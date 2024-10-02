@@ -44,9 +44,9 @@ const checkBookings = async (req, res) => {
             [providerId]
         );
 
-        if (result.rows.length === 0) {
-            return res.status(404).json({ success: true, message: 'No pending bookings found for this provider' });
-        }
+        // if (result.rows.length === 0) {
+        //     return res.status(404).json({ success: true, message: 'No pending bookings found for this provider' });
+        // }
 
         res.status(200).json({
             success: true,
