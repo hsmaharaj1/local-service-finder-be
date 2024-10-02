@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cookieParser()); // For parsing cookies
 
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://local-service-provider-ea814.web.app/'], // Replace with your frontend's origin
+    origin: ['http://localhost:5173', 'https://local-service-provider-ea814.web.app'], // Allow both local and Firebase-deployed frontends
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 
